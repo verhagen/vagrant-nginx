@@ -107,7 +107,7 @@ Show yum options
 	    OpenJDK 64-Bit Server VM (build 25.111-b15, mixed mode)
 	    [vagrant@localhost ~]$
 
-- **Guest** Leave CentOS
+- **Guest** Leave the CentOS (guest) system
 
 	    [vagrant@localhost ~]$ exit
 	    [vagrant@localhost ~]$ exit
