@@ -20,12 +20,14 @@ Make sure the following tools are installed on your (host) system:
 
 	    $ mkdir -p ~/git/vagrant/vagrant-nginx
 	    $ cd ~/git/vagrant/vagrant-nginx
+	    $
 
 - Create a new `Vagrantfile` for [CentOS v7 (latest)](https://www.centos.org/)
 
 	    $ vagrant init centos/7
 	    $ ls -l
 	    -rw-r--r--  1 tjeerd  staff  3012 Dec 14 10:06 Vagrantfile
+	    $
 
 - Start writing a `README.md` which describes the purpose of this project
 
@@ -33,12 +35,14 @@ Make sure the following tools are installed on your (host) system:
 	    $ ls -l
 	    -rw-r--r--@  1 tjeerd  staff  1018 Dec 14 10:27 README.md
 	    -rw-r--r--   1 tjeerd  staff  3012 Dec 14 10:06 Vagrantfile
+	    $
 
 - Initialize as git project
 
 	    $ git init
 	    $ git status
 	    @TODO
+	    $
 
 - Add current files to git repository
 
@@ -48,6 +52,7 @@ Make sure the following tools are installed on your (host) system:
 	    $ git commit -m "Start new project"
 	    $ git status
 	    @TODO
+	    $
 
 - Check the status of the guest system
 
@@ -56,6 +61,7 @@ Make sure the following tools are installed on your (host) system:
 	    
 	    default                   not created (virtualbox)
 	    ...
+		[vagrant@localhost ~]$
 
 
 - Launch the CentOS machine for the first time
@@ -66,6 +72,7 @@ Make sure the following tools are installed on your (host) system:
 	    
 	    default                   running (virtualbox)
 	    ...
+		[vagrant@localhost ~]$
 
 - Enter the CentOS (guest) system
 
@@ -73,24 +80,24 @@ Make sure the following tools are installed on your (host) system:
 	    -bash: warning: setlocale: LC_CTYPE: cannot change locale (UTF-8): No such file or directory
 	    [vagrant@localhost ~]$
 
-- *Guest* Show current working directory on CentOS guest system
+- **Guest** Show current working directory on CentOS guest system
 
 	    [vagrant@localhost ~]$ pwd
 	    /home/vagrant
+		[vagrant@localhost ~]$
 
-- *Guest* Search packages with [YUM (Yellowdog Updater Modified)](https://www.google.com/webhp?ion=1&espv=2&ie=UTF-8#q=yum+linux)
+- **Guest** Search packages with [YUM (Yellowdog Updater Modified)](https://www.google.com/webhp?ion=1&espv=2&ie=UTF-8#q=yum+linux)
 
 Show yum options
 
 	    [vagrant@localhost ~]$ yum --help
 
-
-
 	    [vagrant@localhost ~]$ yum search java
 	    [vagrant@localhost ~]$ yum search java-1.8
+	    [vagrant@localhost ~]$
 
 
-- *Guest* Install package Java Development Kit 1.8.0 [(OpenJDK)](http://openjdk.java.net/)
+- **Guest** Install package Java Development Kit 1.8.0 [(OpenJDK)](http://openjdk.java.net/)
 
 	    [vagrant@localhost ~]$ sudo yum install java-1.8.0-openjdk-devel
 	    
@@ -98,7 +105,15 @@ Show yum options
 	    openjdk version "1.8.0_111"
 	    OpenJDK Runtime Environment (build 1.8.0_111-b15)
 	    OpenJDK 64-Bit Server VM (build 25.111-b15, mixed mode)
+	    [vagrant@localhost ~]$
 
+- **Guest** Leave CentOS
+
+	    [vagrant@localhost ~]$ exit
+	    [vagrant@localhost ~]$ exit
+		logout
+		Connection to 127.0.0.1 closed.
+		$ 
 
 
 - Check if there are git changes 
@@ -112,8 +127,8 @@ Show yum options
 	    
 	    nothing added to commit but untracked files present (use "git add" to track)
 
-    This directory `.vagrant` should not be added to git repository. So add it to the
-    `.gitignore` file.
+This directory `.vagrant` should not be added to git repository. So add it to the
+`.gitignore` file.
 
 	    $ echo .vagrant/ >> .gitignore
 	    $ git status
