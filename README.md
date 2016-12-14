@@ -90,8 +90,7 @@ Make sure the following tools are installed on your (host) system:
 		[vagrant@localhost ~]$
 
 - **Guest** Search packages with [YUM (Yellowdog Updater Modified)](https://www.google.com/webhp?ion=1&espv=2&ie=UTF-8#q=yum+linux)  
-  
-Show `yum` options  
+	Show `yum` options  
   
 	    [vagrant@localhost ~]$ yum --help
 
