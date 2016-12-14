@@ -404,7 +404,8 @@ Make sure the following tools are installed on your (host) system:
 		==> default: Attempting graceful shutdown of VM...
 		$
 	
-- Forward the guest port to the host
+- Forward the guest port `80` to the host `8080`
+	
 	Edit the file `Vagrantfile` and remove the hash `#`, from the line:
 	
 		config.vm.network "forwarded_port", guest: 80, host: 8080
