@@ -37,18 +37,21 @@ Make sure the following tools are installed on your (host) system:
 	    -rw-r--r--   1 tjeerd  staff  3012 Dec 14 10:06 Vagrantfile
 	    $
 
-- Initialize as git project
+- Initialize / create a git repository
 
 	    $ git init
 	    $ git status
 	    @TODO
 	    $
 
-- Add current files to git repository
+- Add the current files `README.md` and `Vagrantfile` to git stash (index) area
 
 	    $ git add *
 	    $ git status
 	    @TODO
+
+- Commit the stashed files to the (default _master_) branch
+
 	    $ git commit -m "Start new project"
 	    $ git status
 	    @TODO
@@ -86,10 +89,10 @@ Make sure the following tools are installed on your (host) system:
 	    /home/vagrant
 		[vagrant@localhost ~]$
 
-- **Guest** Search packages with [YUM (Yellowdog Updater Modified)](https://www.google.com/webhp?ion=1&espv=2&ie=UTF-8#q=yum+linux)
-
-Show yum options
-
+- **Guest** Search packages with [YUM (Yellowdog Updater Modified)](https://www.google.com/webhp?ion=1&espv=2&ie=UTF-8#q=yum+linux)  
+  
+Show `yum` options  
+  
 	    [vagrant@localhost ~]$ yum --help
 
 	    [vagrant@localhost ~]$ yum search java
