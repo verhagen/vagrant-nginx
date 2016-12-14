@@ -142,7 +142,7 @@ Make sure the following tools are installed on your (host) system:
 
 	The guest system is now stopped, see also VirualBox. To start it again use `vagrant up` again.
 	
-	Question: When `vagrant up` is now used. Is the Java JDK then still installed?
+	**Question:** When `vagrant up` is now used. Is the Java JDK then still installed?
 	Try it out to check it!
 
 - Remove the CentOS system completely form VirtualBox
@@ -154,7 +154,7 @@ Make sure the following tools are installed on your (host) system:
 
 	The guest system is removed now, see also VirualBox.
 
-	Question: When `vagrant up` is now used _again_. Is the Java JDK then still
+	**Question:** When `vagrant up` is now used _again_. Is the Java JDK then still
 	installed? Try it out to check it!
 
 - Check if there are git changes 
