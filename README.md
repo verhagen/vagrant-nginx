@@ -132,6 +132,12 @@ Make sure the following tools are installed on your (host) system:
 	`.gitignore` file.
 
 	    $ echo .vagrant/ >> .gitignore
+	    
+	Show the current content of the file `.gitignore`
+	    
+	    $ cat .gitignore 
+		.project
+		.vagrant/
 	    $ git status
 	    On branch master
 	    Changes not staged for commit:
@@ -141,6 +147,9 @@ Make sure the following tools are installed on your (host) system:
 	        modified:   .gitignore
 	
 	    no changes added to commit (use "git add" and/or "git commit -a")
+	    
+	Add the updated `.gitignore` to the git stash area and commit the stahed change(s)
+	    
 	    $ git add .gitignore
 	    $ git commit -m "Adds directory .vagrant"
 	    [master 8f2304c] Adds directory .vagrant
