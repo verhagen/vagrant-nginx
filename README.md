@@ -411,7 +411,7 @@ Make sure the following tools are installed on your (host) system:
 		config.vm.network "forwarded_port", guest: 80, host: 8080
 	
 	Make sure there is nothing already running on that port `8080`, like Tomcat, Jetty or other things.
-	A check with `curl` should show nothing is running on it.
+	A check with `curl`, it should fail to connect.
 
 		$ curl localhost:8080
 		curl: (7) Failed to connect to localhost port 8080: Connection refused
@@ -489,14 +489,6 @@ Make sure the following tools are installed on your (host) system:
 	
 	Double check! Open a browser to [http://localhost:8080/](http://localhost:8080/)
 	
-
-- **Guest** Leave the Ubuntu (guest) system
-
-	    ubuntu@ubuntu-xenial:~$ exit
-		logout
-		Connection to 127.0.0.1 closed.
-		$ 
-
 - Stop the Ubuntu (guest) system
 
 		$ vagrant status
@@ -510,9 +502,7 @@ Make sure the following tools are installed on your (host) system:
 		simply run `vagrant up`.
 		$ vagrant halt
 		==> default: Attempting graceful shutdown of VM...
-		$ vagrant halt
-		==> default: Attempting graceful shutdown of VM...
-		Tjeerds-MacBook-Pro:vagrant-nginx tjeerd$ vagrant status
+		$ vagrant status
 		Current machine states:
 		
 		default                   poweroff (virtualbox)
@@ -522,7 +512,7 @@ Make sure the following tools are installed on your (host) system:
 
 	The guest system is now stopped, see also VirualBox. To start it again use `vagrant up` again.
 	
-	**Question:** When `vagrant up` is now used. Is the Java JDK then still installed?
+	**Question:** When `vagrant up` is now used. Is nginx then still installed and running?
 	Try it out to check it!
 
 - Remove the Ubuntu system completely form VirtualBox
@@ -534,8 +524,8 @@ Make sure the following tools are installed on your (host) system:
 
 	The guest system is removed now, see also VirualBox.
 
-	**Question:** When `vagrant up` is now used _again_. Is the Java JDK then still
-	installed? Try it out to check it!
+	**Question:** When `vagrant up` is now used _again_. Is nginx still
+	installed and running? Try it out to check it!
 
 - Check if there are git changes 
 
