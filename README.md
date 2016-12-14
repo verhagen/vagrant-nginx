@@ -69,8 +69,66 @@ Make sure the following tools are installed on your (host) system:
 
 - Enter the CentOS (guest) system
 
-	vagrant ssh
+	> vagrant ssh
+	-bash: warning: setlocale: LC_CTYPE: cannot change locale (UTF-8): No such file or directory
+	[vagrant@localhost ~]$
+
+- *Guest* Show current working directory on CentOS guest system
+
+	[vagrant@localhost ~]$ pwd
+	/home/vagrant
+
+- *Guest* Search packages with [YUM (Yellowdog Updater Modified)](https://www.google.com/webhp?ion=1&espv=2&ie=UTF-8#q=yum+linux)
+
+Show yum options
+
+	[vagrant@localhost ~]$ yum --help
 
 
-- Check changes 
+
+	[vagrant@localhost ~]$ yum search java
+	[vagrant@localhost ~]$ yum search java-1.8
+
+
+- *Guest* Install package Java Development Kit 1.8.0 [(OpenJDK)](http://openjdk.java.net/)
+
+	[vagrant@localhost ~]$ sudo yum install java-1.8.0-openjdk-devel
+	
+	[vagrant@localhost ~]$ java -version
+	openjdk version "1.8.0_111"
+	OpenJDK Runtime Environment (build 1.8.0_111-b15)
+	OpenJDK 64-Bit Server VM (build 25.111-b15, mixed mode)
+
+
+
+- Check if there are git changes 
+
+	> git status
+	On branch master
+	Untracked files:
+	  (use "git add <file>..." to include in what will be committed)
+	
+		.vagrant/
+	
+	nothing added to commit but untracked files present (use "git add" to track)
+
+	This directory `.vagrant` should not be added to git repository. So add it to the
+	`.gitignore` file.
+
+	> echo .vagrant/ >> .gitignore
+	> git status
+	On branch master
+	Changes not staged for commit:
+	  (use "git add <file>..." to update what will be committed)
+	  (use "git checkout -- <file>..." to discard changes in working directory)
+
+		modified:   .gitignore
+
+	no changes added to commit (use "git add" and/or "git commit -a")
+	> git add .gitignore
+	> git commit -m "Adds directory .vagrant"
+	[master 8f2304c] Adds directory .vagrant
+	 1 file changed, 1 insertion(+)
+
+
 
