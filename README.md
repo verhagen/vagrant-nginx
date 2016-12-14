@@ -413,11 +413,12 @@ Make sure the following tools are installed on your (host) system:
 		config.vm.network "forwarded_port", guest: 80, host: 8080
 	
 	Make sure there is nothing already running on that port `8080`, like Tomcat, Jetty or other things.
-	A check with `curl`, it should fail to connect.
+	Check it with `curl`, it should fail to connect.
 
 		$ curl localhost:8080
 		curl: (7) Failed to connect to localhost port 8080: Connection refused
-	
+		$
+		
 	Start Ubuntu again.
 	
 		$ vagrant up
@@ -488,8 +489,9 @@ Make sure the following tools are installed on your (host) system:
 		<p><em>Thank you for using nginx.</em></p>
 		</body>
 		</html>
+		$
 	
-	Double check! Open a browser to [http://localhost:8080/](http://localhost:8080/)
+	Double check! Open a browser and go to [http://localhost:8080/](http://localhost:8080/)
 	
 - Stop the Ubuntu (guest) system
 
