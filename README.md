@@ -23,9 +23,11 @@ Make sure the following tools are installed on your (host) system:
 
 - Create a new `Vagrantfile` for [CentOS v7 (latest)](https://www.centos.org/)
 
+
 	$ vagrant init centos/7
 	$ ls -l
 	-rw-r--r--  1 tjeerd  staff  3012 Dec 14 10:06 Vagrantfile
+
 
 - Start writing a `README.md` which describes the purpose of this project
 
