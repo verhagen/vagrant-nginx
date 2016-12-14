@@ -493,6 +493,8 @@ Make sure the following tools are installed on your (host) system:
 	
 	Double check! Open a browser and go to [http://localhost:8080/](http://localhost:8080/)
 	
+	<img  src="https://github.com/dojo-greenfoot/gas-tycoon/raw/master/images/gas-tycoon-192x256.png" />
+	
 - Stop the Ubuntu (guest) system
 
 		$ vagrant status
