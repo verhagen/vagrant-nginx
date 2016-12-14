@@ -31,7 +31,7 @@ Make sure the following tools are installed on your (host) system:
 
 - Start writing a `README.md` which describes the purpose of this project
 
-	    $ echo "# Vagrant - CentOS - nginx" $ README.md
+	    $ echo "# Vagrant - CentOS - nginx" > README.md
 	    $ ls -l
 	    -rw-r--r--@  1 tjeerd  staff  1018 Dec 14 10:27 README.md
 	    -rw-r--r--   1 tjeerd  staff  3012 Dec 14 10:06 Vagrantfile
