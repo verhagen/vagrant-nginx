@@ -320,6 +320,8 @@ Make sure the following tools are installed on your (host) system:
 		Processing triggers for ureadahead (0.100.0-19) ...
 		Processing triggers for ufw (0.35-0ubuntu2) ...
 		ubuntu@ubuntu-xenial:~$
+	
+	**Question:** What will happen if you install again the same package? Try it out!
 
 - **Guest** Check that the nginx service is running
 
