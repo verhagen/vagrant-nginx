@@ -393,7 +393,101 @@ Make sure the following tools are installed on your (host) system:
 	
 	The nic `lo` is the loopback / localhost / 127.0.0.1 one. Check the ip-address (here `10.0.2.15`) of the other nic.
 	
-	Open a browser and use the above ip-address [http://10.0.2.15/](http://10.0.2.15/)
+	**Question:** How is the other nic configured? Look it up in VirtualBox.
+
+	Leave the guest-os, and stop the guest-os.
+	
+		ubuntu@ubuntu-xenial:~$ exit
+		logout
+		Connection to 127.0.0.1 closed.
+		$ vagrant halt
+		==> default: Attempting graceful shutdown of VM...
+		$
+	
+- Forward the guest port to the host
+	Edit the file `Vagrantfile` and remove the hash `#`, from the line:
+	
+		config.vm.network "forwarded_port", guest: 80, host: 8080
+	
+	Make sure there is nothing already running on that port `8080`, like Tomcat, Jetty or other things.
+	A check with `curl` should show nothing is running on it.
+
+		$ curl localhost:8080
+		curl: (7) Failed to connect to localhost port 8080: Connection refused
+	
+	Start Ubuntu again.
+	
+		$ vagrant up
+		Bringing machine 'default' up with 'virtualbox' provider...
+		==> default: Checking if box 'ubuntu/xenial64' is up to date...
+		==> default: A newer version of the box 'ubuntu/xenial64' is available! You currently
+		==> default: have version '20161122.0.0'. The latest is version '20161213.0.0'. Run
+		==> default: `vagrant box update` to update.
+		==> default: Clearing any previously set forwarded ports...
+		==> default: Clearing any previously set network interfaces...
+		==> default: Preparing network interfaces based on configuration...
+		    default: Adapter 1: nat
+		==> default: Forwarding ports...
+		    default: 80 (guest) => 8080 (host) (adapter 1)
+		    default: 22 (guest) => 2222 (host) (adapter 1)
+		==> default: Running 'pre-boot' VM customizations...
+		==> default: Booting VM...
+		==> default: Waiting for machine to boot. This may take a few minutes...
+		    default: SSH address: 127.0.0.1:2222
+		    default: SSH username: ubuntu
+		    default: SSH auth method: password
+		    default: Warning: Remote connection disconnect. Retrying...
+		    default: Warning: Remote connection disconnect. Retrying...
+		    default: Warning: Remote connection disconnect. Retrying...
+		    default: Warning: Remote connection disconnect. Retrying...
+		==> default: Machine booted and ready!
+		==> default: Checking for guest additions in VM...
+		    default: The guest additions on this VM do not match the installed version of
+		    default: VirtualBox! In most cases this is fine, but in rare cases it can
+		    default: prevent things such as shared folders from working properly. If you see
+		    default: shared folder errors, please make sure the guest additions within the
+		    default: virtual machine match the version of VirtualBox you have installed on
+		    default: your host and reload your VM.
+		    default: 
+		    default: Guest Additions Version: 5.0.24
+		    default: VirtualBox Version: 5.1
+		==> default: Mounting shared folders...
+		    default: /vagrant => /Users/tjeerd/git/vagrant/vagrant-nginx
+		==> default: Machine already provisioned. Run `vagrant provision` or use the `--provision`
+		==> default: flag to force provisioning. Provisioners marked to run always will still run.
+		$
+	
+	Check if the port forwarding works.
+	
+		$ curl localhost:8080
+		<!DOCTYPE html>
+		<html>
+		<head>
+		<title>Welcome to nginx!</title>
+		<style>
+		    body {
+		        width: 35em;
+		        margin: 0 auto;
+		        font-family: Tahoma, Verdana, Arial, sans-serif;
+		    }
+		</style>
+		</head>
+		<body>
+		<h1>Welcome to nginx!</h1>
+		<p>If you see this page, the nginx web server is successfully installed and
+		working. Further configuration is required.</p>
+		
+		<p>For online documentation and support please refer to
+		<a href="http://nginx.org/">nginx.org</a>.<br/>
+		Commercial support is available at
+		<a href="http://nginx.com/">nginx.com</a>.</p>
+		
+		<p><em>Thank you for using nginx.</em></p>
+		</body>
+		</html>
+	
+	Double check! Open a browser to [http://localhost:8080/](http://localhost:8080/)
+	
 
 - **Guest** Leave the Ubuntu (guest) system
 
