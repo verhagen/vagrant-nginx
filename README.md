@@ -67,7 +67,8 @@ Make sure the following tools are installed on your (host) system:
 		[vagrant@localhost ~]$
 
 
-- Launch the CentOS machine for the first time
+- Launch the CentOS machine for the first time  
+	Start VirtualBox, so you can see how the _guest operating system_ is created and started.
 
 	    $ vagrant up
 	    $ vagrant status
@@ -137,8 +138,9 @@ Make sure the following tools are installed on your (host) system:
 		default                   poweroff (virtualbox)
 		
 		The VM is powered off. To restart the VM, simply run `vagrant up`
+		$
 
-	The guest system is now stopped. See also VirualBox. To start it again use `vagrant up` again.
+	The guest system is now stopped, see also VirualBox. To start it again use `vagrant up` again.
 
 - Remove the CentOS system completely form VirtualBox
 
@@ -146,6 +148,8 @@ Make sure the following tools are installed on your (host) system:
 		    default: Are you sure you want to destroy the 'default' VM? [y/N] y
 		==> default: Destroying VM and associated drives...
 		$
+
+	The guest system is removed now, see also VirualBox.
 
 - Check if there are git changes 
 
