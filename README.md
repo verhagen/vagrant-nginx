@@ -116,6 +116,36 @@ Make sure the following tools are installed on your (host) system:
 		Connection to 127.0.0.1 closed.
 		$ 
 
+- Stop the CentOS (guest) system
+
+		$ vagrant status
+		Current machine states:
+		
+		default                   running (virtualbox)
+		
+		The VM is running. To stop this VM, you can run `vagrant halt` to
+		shut it down forcefully, or you can run `vagrant suspend` to simply
+		suspend the virtual machine. In either case, to restart it again,
+		simply run `vagrant up`.
+		$ vagrant halt
+		==> default: Attempting graceful shutdown of VM...
+		$ vagrant halt
+		==> default: Attempting graceful shutdown of VM...
+		Tjeerds-MacBook-Pro:vagrant-nginx tjeerd$ vagrant status
+		Current machine states:
+		
+		default                   poweroff (virtualbox)
+		
+		The VM is powered off. To restart the VM, simply run `vagrant up`
+
+	The guest system is now stopped. See also VirualBox. To start it again use `vagrant up` again.
+
+- Remove the CentOS system completely form VirtualBox
+
+		$ vagrant destroy
+		    default: Are you sure you want to destroy the 'default' VM? [y/N] y
+		==> default: Destroying VM and associated drives...
+		$
 
 - Check if there are git changes 
 
