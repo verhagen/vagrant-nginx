@@ -128,7 +128,7 @@ Make sure the following tools are installed on your (host) system:
 	    
 	    nothing added to commit but untracked files present (use "git add" to track)  
 	
-	This directory `.vagrant` should not be added to git repository. So add it to the  
+	This directory `.vagrant` should not be added to git repository. So add it to the
 	`.gitignore` file.
 
 	    $ echo .vagrant/ >> .gitignore
