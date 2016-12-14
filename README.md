@@ -18,40 +18,40 @@ Make sure the following tools are installed on your (host) system:
 
 - Create a new directory for the project
 
-	> mkdir -p ~/git/vagrant/vagrant-nginx
-	> cd ~/git/vagrant/vagrant-nginx
+	$ mkdir -p ~/git/vagrant/vagrant-nginx
+	$ cd ~/git/vagrant/vagrant-nginx
 
 - Create a new `Vagrantfile` for [CentOS v7 (latest)](https://www.centos.org/)
 
-	> vagrant init centos/7
-	> ls -l
+	$ vagrant init centos/7
+	$ ls -l
 	-rw-r--r--  1 tjeerd  staff  3012 Dec 14 10:06 Vagrantfile
 
 - Start writing a `README.md` which describes the purpose of this project
 
-    > echo "# Vagrant - CentOS - nginx" > README.md
-    > ls -l
+    $ echo "# Vagrant - CentOS - nginx" $ README.md
+    $ ls -l
     -rw-r--r--@  1 tjeerd  staff  1018 Dec 14 10:27 README.md
 	-rw-r--r--   1 tjeerd  staff  3012 Dec 14 10:06 Vagrantfile
 
 - Initialize as git project
 
-    > git init
-    > git status
+    $ git init
+    $ git status
     @TODO
 
 - Add current files to git repository
 
-    > git add *
-    > git status
+    $ git add *
+    $ git status
     @TODO
-    > git commit -m "Start new project"
-    > git status
+    $ git commit -m "Start new project"
+    $ git status
     @TODO
 
 - Check the status of the guest system
 
-	> vagrant status
+	$ vagrant status
 	Current machine states:
 	
 	default                   not created (virtualbox)
@@ -60,8 +60,8 @@ Make sure the following tools are installed on your (host) system:
 
 - Launch the CentOS machine for the first time
 
-	> vagrant up
-	> vagrant status
+	$ vagrant up
+	$ vagrant status
 	Current machine states:
 	
 	default                   running (virtualbox)
@@ -69,7 +69,7 @@ Make sure the following tools are installed on your (host) system:
 
 - Enter the CentOS (guest) system
 
-	> vagrant ssh
+	$ vagrant ssh
 	-bash: warning: setlocale: LC_CTYPE: cannot change locale (UTF-8): No such file or directory
 	[vagrant@localhost ~]$
 
@@ -103,10 +103,10 @@ Show yum options
 
 - Check if there are git changes 
 
-	> git status
+	$ git status
 	On branch master
 	Untracked files:
-	  (use "git add <file>..." to include in what will be committed)
+	  (use "git add <file$..." to include in what will be committed)
 	
 		.vagrant/
 	
@@ -115,8 +115,8 @@ Show yum options
 	This directory `.vagrant` should not be added to git repository. So add it to the
 	`.gitignore` file.
 
-	> echo .vagrant/ >> .gitignore
-	> git status
+	$ echo .vagrant/ >> .gitignore
+	$ git status
 	On branch master
 	Changes not staged for commit:
 	  (use "git add <file>..." to update what will be committed)
@@ -125,8 +125,8 @@ Show yum options
 		modified:   .gitignore
 
 	no changes added to commit (use "git add" and/or "git commit -a")
-	> git add .gitignore
-	> git commit -m "Adds directory .vagrant"
+	$ git add .gitignore
+	$ git commit -m "Adds directory .vagrant"
 	[master 8f2304c] Adds directory .vagrant
 	 1 file changed, 1 insertion(+)
 
