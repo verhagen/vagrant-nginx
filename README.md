@@ -199,3 +199,170 @@ Make sure the following tools are installed on your (host) system:
 	     1 file changed, 1 insertion(+)
 		$
 
+## Add nginx
+
+the pacakge nginx is not directly support in CentOS. But adding the
+[Extra Packages for Enterprise Linux (EPEL)](https://fedoraproject.org/wiki/EPEL) repository,
+gives access to nginx package as well.
+See also [How To Install Nginx on CentOS 7](https://www.digitalocean.com/community/tutorials/how-to-install-nginx-on-centos-7).
+
+- Launch and enter CentOS
+
+	    $ vagrant up
+	    $ vagrant ssh
+
+- Add the Extra Packages for Enterprise Linux (EPEL)
+
+		$ sudo yum install epel-release
+
+- Search in yum for nginx
+
+		[vagrant@localhost ~]$ yum search nginx
+		Failed to set locale, defaulting to C
+		Loaded plugins: fastestmirror
+		epel/x86_64/metalink                                                                                 |  24 kB  00:00:00     
+		epel                                                                                                 | 4.3 kB  00:00:00     
+		(1/3): epel/x86_64/updateinfo                                                                        | 691 kB  00:00:00     
+		(2/3): epel/x86_64/group_gz                                                                          | 170 kB  00:00:00     
+		(3/3): epel/x86_64/primary_db                                                                        | 4.4 MB  00:00:01     
+		Loading mirror speeds from cached hostfile
+		 * base: mirror.i3d.net
+		 * epel: mirror.serverbeheren.nl
+		 * extras: centos.mirror.transip.nl
+		 * updates: mirror.i3d.net
+		=============================================== N/S matched: nginx ====================================================
+		collectd-nginx.x86_64 : Nginx plugin for collectd
+		munin-nginx.noarch : Network-wide graphing framework (cgi files for nginx)
+		nginx-all-modules.noarch : A meta package that installs all available Nginx modules
+		nginx-filesystem.noarch : The basic directory layout for the Nginx server
+		nginx-mod-http-geoip.x86_64 : Nginx HTTP geoip module
+		nginx-mod-http-image-filter.x86_64 : Nginx HTTP image filter module
+		nginx-mod-http-perl.x86_64 : Nginx HTTP perl module
+		nginx-mod-http-xslt-filter.x86_64 : Nginx XSLT module
+		nginx-mod-mail.x86_64 : Nginx mail modules
+		nginx-mod-stream.x86_64 : Nginx stream modules
+		owncloud-nginx.noarch : Nginx integration for ownCloud
+		pcp-pmda-nginx.x86_64 : Performance Co-Pilot (PCP) metrics for the Nginx Webserver
+		nginx.x86_64 : A high performance web server and reverse proxy server
+		
+		  Name and summary matches only, use "search all" for everything.
+		[vagrant@localhost ~]$
+
+- Add nginx
+
+		$ sudo yum install -y nginx
+
+- Check if nginx is running
+
+		[vagrant@localhost ~]$ systemctl status nginx
+		● nginx.service - The nginx HTTP and reverse proxy server
+		   Loaded: loaded (/usr/lib/systemd/system/nginx.service; disabled; vendor preset: disabled)
+		   Active: inactive (dead)
+		[vagrant@localhost ~]$
+
+- Start nginx and check status again
+
+		[vagrant@localhost ~]$ sudo systemctl start nginx
+		[vagrant@localhost ~]$ systemctl status nginx
+		● nginx.service - The nginx HTTP and reverse proxy server
+		   Loaded: loaded (/usr/lib/systemd/system/nginx.service; disabled; vendor preset: disabled)
+		   Active: active (running) since Fri 2016-12-16 21:49:38 UTC; 4s ago
+		  Process: 11829 ExecStart=/usr/sbin/nginx (code=exited, status=0/SUCCESS)
+		  Process: 11827 ExecStartPre=/usr/sbin/nginx -t (code=exited, status=0/SUCCESS)
+		  Process: 11825 ExecStartPre=/usr/bin/rm -f /run/nginx.pid (code=exited, status=0/SUCCESS)
+		 Main PID: 11832 (nginx)
+		   CGroup: /system.slice/nginx.service
+		           ├─11832 nginx: master process /usr/sbin/nginx
+		           └─11833 nginx: worker process
+		[vagrant@localhost ~]$
+
+	Check that nginx is up
+	
+		[vagrant@localhost ~]$ curl http://localhost/
+		<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+		
+		<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+		    <head>
+		        <title>Test Page for the Nginx HTTP Server on Fedora</title>
+		        
+		        ...
+		        
+		                <a href="http://fedoraproject.org/"><img 
+		                    src="poweredby.png" 
+		                    alt="[ Powered by Fedora ]" 
+		                    width="88" height="31" /></a>
+		            </div>
+		        </div>
+		    </body>
+		</html>
+		[vagrant@localhost ~]$
+
+- **Guest** Stop the guest-os
+
+	Leave the guest-os and stop the guest-os
+
+		[vagrant@localhost ~]$ exit
+		logout
+		Connection to 127.0.0.1 closed.
+		Tjeerds-MacBook-Pro:vagrant-nginx tjeerd$ vagrant halt
+		==> default: Attempting graceful shutdown of VM...
+		$
+
+- Forward the guest port `80` to the host `8080`
+	
+	Edit the file `Vagrantfile` and remove the hash `#`, from the line:
+	
+		config.vm.network "forwarded_port", guest: 80, host: 8080
+	
+	Make sure there is nothing already running on that port `8080`, like Tomcat, Jetty or other things.
+	Check it with `curl`, it should fail to connect.
+
+		$ curl localhost:8080
+		curl: (7) Failed to connect to localhost port 8080: Connection refused
+		$
+		
+	Start CentOS again.
+	
+		$ vagrant up
+		Bringing machine 'default' up with 'virtualbox' provider...
+		==> default: Checking if box 'centos/7' is up to date...
+		==> default: A newer version of the box 'centos/7' is available! You currently
+		==> default: have version '1610.01'. The latest is version '1611.01'. Run
+		==> default: `vagrant box update` to update.
+		==> default: Clearing any previously set forwarded ports...
+		==> default: Fixed port collision for 22 => 2222. Now on port 2200.
+		==> default: Clearing any previously set network interfaces...
+		==> default: Preparing network interfaces based on configuration...
+		    default: Adapter 1: nat
+		==> default: Forwarding ports...
+		    default: 80 (guest) => 8080 (host) (adapter 1)
+		    default: 22 (guest) => 2200 (host) (adapter 1)
+		==> default: Booting VM...
+		==> default: Waiting for machine to boot. This may take a few minutes...
+		    default: SSH address: 127.0.0.1:2200
+		    default: SSH username: vagrant
+		    default: SSH auth method: private key
+		==> default: Machine booted and ready!
+		==> default: Checking for guest additions in VM...
+		    default: No guest additions were detected on the base box for this VM! Guest
+		    default: additions are required for forwarded ports, shared folders, host only
+		    default: networking, and more. If SSH fails on this machine, please install
+		    default: the guest additions and repackage the box to continue.
+		    default: 
+		    default: This is not an error message; everything may continue to work properly,
+		    default: in which case you may ignore this message.
+		==> default: Rsyncing folder: /Users/tjeerd/git/vagrant/vagrant-nginx/ => /vagrant
+		==> default: Machine already provisioned. Run `vagrant provision` or use the `--provision`
+		==> default: flag to force provisioning. Provisioners marked to run always will still run.
+		$
+
+	Check if the port forwarding works.
+	
+		$ curl localhost:8080
+	
+	Double check! Open a browser and go to [http://localhost:8080/](http://localhost:8080/) 	
+	
+	It should show the default opening page.
+	
+	<img  src="https://raw.githubusercontent.com/verhagen/vagrant-nginx/master/images/nginx-welcome-00.jpg" />
+
