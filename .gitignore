@@ -4,3 +4,8 @@
 
 # Eclipse configuration
 .project
+
+# Jekyll configuration
+_site
+.sass-cache
+.jekyll-metadata

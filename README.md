@@ -1,4 +1,6 @@
-# Vagrant - CentOS - nginx
+# GitHub Pages - Using Vagrant to set up nginx
+
+See the 
 
 
 Set up a server with the [CentOS](https://www.centos.org/) operating system.
