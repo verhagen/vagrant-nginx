@@ -109,6 +109,9 @@ Make sure the following tools are installed on your (host) system:
 	    OpenJDK Runtime Environment (build 1.8.0_111-b15)
 	    OpenJDK 64-Bit Server VM (build 25.111-b15, mixed mode)
 	    [vagrant@localhost ~]$
+	    
+	    Optional: To prevent entering 'y' twice during the installation process 	
+    	    [vagrant@localhost ~]$ sudo yum install -y java-1.8.0-openjdk-devel
 
 - **Guest** Leave the CentOS (guest) system
 
